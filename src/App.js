@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import civilianResearchData from './CivilianResearch';
+import combatResearchData from './CombatResearch';
+import technologyResearchData from './TechnologyResearch';
+import DataTable from './DataTable';
 
-function App() {
+const App = () => {
+  const [activeTab, setActiveTab] = useState('Civilian');
+
+  // Function to determine which data to display
+  const getActiveData = () => {
+    switch (activeTab) {
+      case 'Civilian':
+        return civilianResearchData;
+      case 'Combat':
+        return combatResearchData;
+      case 'Technology':
+        return technologyResearchData;
+      default:
+        return civilianResearchData;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <button onClick={() => setActiveTab('Civilian')}>Civilian</button>
+        <button onClick={() => setActiveTab('Combat')}>Combat</button>
+        <button onClick={() => setActiveTab('Technology')}>Technology</button>
+      </div>
+      <DataTable data={getActiveData()} />
     </div>
   );
-}
+};
 
 export default App;
