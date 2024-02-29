@@ -3,6 +3,7 @@ import civilianResearchData from './CivilianResearch';
 import combatResearchData from './CombatResearch';
 import technologyResearchData from './TechnologyResearch';
 import DataTable from './DataTable';
+import './App.css';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('Civilian');
@@ -23,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      <div>
+      <div class="categories">
         <button onClick={() => setActiveTab('Civilian')}>Civilian</button>
         <button onClick={() => setActiveTab('Combat')}>Combat</button>
         <button onClick={() => setActiveTab('Technology')}>Technology</button>
